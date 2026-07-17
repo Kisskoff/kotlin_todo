@@ -46,7 +46,7 @@ fun AppBar(navController: NavController,currentRoute: String?) {
     } else {
 
     CenterAlignedTopAppBar(
-        title = { Text(text = "Todo List") },
+        title = { Text(text = currentItem?.name?: "") },
      //   expandedHeight = 0.dp,
         colors = topAppBarColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer,
