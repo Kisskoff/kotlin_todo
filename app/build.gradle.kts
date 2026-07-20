@@ -1,3 +1,6 @@
+//import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+//import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -28,13 +31,14 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
     buildFeatures {
+        buildConfig = true
         compose = true
     }
 }
@@ -50,13 +54,18 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
-    implementation(libs.material3)
     implementation(libs.androidx.material.icons.extended)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.ui.text)
     // implementation(libs.androidx.lifecycle.viewmodel.ktx)
-   implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.ui.unit)
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
+    implementation(libs.gson)
+    implementation(libs.retrofit)
+    implementation(libs.retrofitConverterScalars)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
