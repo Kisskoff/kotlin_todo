@@ -1,5 +1,6 @@
 package com.formation.todolist.ui.view
 import android.util.Log
+import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AcUnit
 import androidx.compose.material.icons.filled.AccountCircle
@@ -9,10 +10,12 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SearchBar
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import com.formation.todolist.model.ItemNav
 import com.formation.todolist.route.AppDatas
@@ -32,7 +35,15 @@ fun AppBar(navController: NavController,currentRoute: String?) {
 
     if (currentRoute == ItemNav.LinkedIn.route || currentRoute == ItemNav.Weather.route) {
         TopAppBar(
-            title = { Text(text = currentItem?.name?: "") },
+            title = {
+               // Text(text = currentItem?.name?: "Weather")
+                SimpleSearchBar(
+                    textFieldState = rememberTextFieldState(),
+                    onSearch = { navController.navigate(ItemNav.Weather.route) },
+                    searchResults = emptyList(),
+                    modifier = Modifier
+                )
+                    },
             colors = topAppBarColors(
                 containerColor = MaterialTheme.colorScheme.primaryContainer,
                 titleContentColor = MaterialTheme.colorScheme.primary,
